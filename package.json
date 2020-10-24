@@ -1,0 +1,45 @@
+{
+   "name": "apihelp-desk",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
+      "test": "jest",
+      "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules src/server.ts",
+      "start": "ts-node src/index.ts"
+   },
+   "author": "Vinicius e Douglas",
+   "license": "ISC",
+   "devDependencies": {
+      "@babel/cli": "^7.12.1",
+      "@babel/core": "^7.12.3",
+      "@babel/node": "^7.12.1",
+      "@babel/preset-env": "^7.12.1",
+      "@babel/preset-typescript": "^7.12.1",
+      "@types/jest": "^26.0.14",
+      "@typescript-eslint/eslint-plugin": "^4.4.1",
+      "@typescript-eslint/parser": "^4.4.1",
+      "babel-plugin-module-resolver": "^4.0.0",
+      "eslint": "^7.11.0",
+      "eslint-config-airbnb-base": "^14.2.0",
+      "eslint-plugin-import": "^2.22.1",
+      "jest": "^26.5.3",
+      "ts-jest": "^26.4.1",
+      "ts-node-dev": "^1.0.0",
+      "tsconfig-paths": "^3.9.0",
+      "typescript": "3.3.3333",
+      "ts-node": "3.3.0",
+      "@types/node": "^8.0.29"
+   },
+   "dependencies": {
+      "@types/express": "^4.17.8",
+      "@types/uuid": "^8.3.0",
+      "express": "^4.17.1",
+      "mssql": "^6.2.3",
+      "reflect-metadata": "^0.1.10",
+      "typeorm": "0.2.28",
+      "uuid": "^8.3.1",
+      "mysql": "^2.14.1"
+   }
+}
