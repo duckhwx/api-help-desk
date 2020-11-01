@@ -1,6 +1,5 @@
-import { User } from "../../../models/UserModel";
-import { IUserRepository } from "../../../repositories/IUserRepository";
-import { ICreateUserRequestDTO } from "./CreateUserDTO";
+import { IUserRepository } from "@repositories/userRepository/IUserRepository";
+import { ICreateUserRequestDTO } from "@repositories/userRepository/CreateUserDTO";
 
 export class CreateUserUseCase {
     constructor (
@@ -9,12 +8,17 @@ export class CreateUserUseCase {
 
     async create(params: ICreateUserRequestDTO) {
         
-            const userAlredyExists = await this.usersRepository.findByUsername(params.userName);
+            const userAlredyExists = await this.usersRepository.findByUsername(params.username);
 
-            if (userAlredyExists) {
-                throw new Error('User exists!');
-            }
+            // if (userAlredyExists) {
+            //     throw new Error('User exists!');
+            // }
 
-            const user = new User(params.name, params.email, params.password, params.permission);
+            this.usersRepository.create({
+                email: params.email, 
+                name: params.name, 
+                username: params.username, 
+                permission: params.permission
+            });
     }
 }

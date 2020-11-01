@@ -1,18 +1,45 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { ICreateUserRequestDTO } from "@repositories/userRepository/CreateUserDTO";
+import { IUserRepository } from "@repositories/userRepository/IUserRepository";
+import {Entity, PrimaryGeneratedColumn, Column, getRepository} from "typeorm";
+import db from '../database/database';
 
 @Entity()
-export class User {
+export class User implements IUserRepository{
 
     @PrimaryGeneratedColumn()
-    id: number;
+    readonly id!: number;
 
     @Column()
-    firstName: string;
+    name: string;
 
     @Column()
-    lastName: string;
+    email: string;
 
     @Column()
-    age: number;
+    username: string;
 
+    @Column({ nullable: true })
+    password: string;
+
+    @Column()
+    permission: number;
+
+    async create (params: ICreateUserRequestDTO) {
+
+        try {
+            const connection = await db.connection();
+            const repository = getRepository(User);
+    
+            await repository.save(params);
+            await connection.close();
+
+        } catch (error) {
+
+            throw new Error(error);
+        }
+    }
+
+    async findByUsername () {
+        return '';
+    }
 }

@@ -7,7 +7,8 @@
       "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
       "test": "jest",
       "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules src/server.ts",
-      "start": "ts-node src/index.ts"
+      "start": "ts-node src/index.ts",
+      "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
    },
    "author": "Vinicius e Douglas",
    "license": "ISC",
@@ -35,11 +36,13 @@
    "dependencies": {
       "@types/express": "^4.17.8",
       "@types/uuid": "^8.3.0",
+      "axios": "^0.21.0",
       "express": "^4.17.1",
       "mssql": "^6.2.3",
+      "mysql": "^2.14.1",
       "reflect-metadata": "^0.1.10",
+      "supertest": "^5.0.0",
       "typeorm": "0.2.28",
-      "uuid": "^8.3.1",
-      "mysql": "^2.14.1"
+      "uuid": "^8.3.1"
    }
 }
